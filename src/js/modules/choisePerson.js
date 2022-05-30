@@ -5,7 +5,6 @@ export const choise = () => {
     let choiseHero = false
     let choiseMonster = false
 
-    let counterChoise = 0
 
     function activeChoise(item,activeClass){
         let itemBlcok = item.closest('.person__characther').querySelectorAll('.person__item')

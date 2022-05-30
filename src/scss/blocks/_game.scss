@@ -1,0 +1,53 @@
+.game{
+    height: 100vh;
+    background-image: url('../../img/game/maxresdefault.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+    &__content{
+        display: none;
+        position: relative;
+    }
+    &__canvas{
+        padding: 60px 0;
+    }
+    &__health{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0 15px;
+        top: 80px;
+        &-person{
+            height: 30px;
+            width: 100%;
+            background-color: red;
+            &:nth-child(1){
+                display: flex;
+                justify-content: flex-end;
+            }
+            &-bg{
+                height: 30px;
+                width: 100%;
+                background-color: aqua;
+            }
+        }
+    }
+    &__timer{
+        padding-top: 10px;
+        text-align: center;
+        width: 100px;
+        height: 40px;
+        background-color: red;
+    }
+    &__end{
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%);
+        font-size: 36px;
+        color: white;
+    }
+}

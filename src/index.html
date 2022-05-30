@@ -70,7 +70,23 @@
             </div>
         </section>
         <section class="game" id="game">
-            <canvas></canvas>
+            <div class="container">
+                <div class="game__content">
+                    <div class="game__health">
+                        <div class="game__health-person">
+                            <div class="game__health-person-bg" id="player1"></div>
+                        </div>
+                        <div class="game__timer">10</div>
+                        <div class="game__health-person">
+                            <div class="game__health-person-bg" id="player2"></div>
+                        </div>
+                    </div>
+                    <div class="game__end">
+                        Tie
+                    </div>
+                    <canvas class="game__canvas"></canvas>
+                </div>
+            </div>
         </section>
     </main>
     <script src="js/main.min.js"></script>
