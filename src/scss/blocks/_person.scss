@@ -1,0 +1,59 @@
+.person{
+    height: 100vh;
+    background-color: black;
+    position: relative;
+    &__title{
+        text-align: center;
+        padding-top: 60px;
+        font-size: 50px;
+        color: white;
+    }
+    &__choise{
+        margin: 200px auto;
+        display: grid;
+        grid-template-columns: repeat(2,400px);
+        justify-content: space-between;
+        position: relative;
+    }
+
+    &__characther{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__item{
+        cursor: pointer;
+        border: 1px solid rgba(236, 236, 236, 0.082);
+    }
+    
+    &__player{
+        position: absolute;
+        color: white;
+        font-size: 30px;
+        top: -10%;
+    }
+    &__accept{
+        text-align: center;
+    }
+}
+
+#knights{
+    &:hover{
+        border-color: aqua;
+    }
+}
+
+#monster{
+    &:hover{
+        border-color: red;
+    }
+}
+
+
+.active__knights{
+    border-color: aqua;
+}
+
+.active__monster{
+    border-color: red;
+}
