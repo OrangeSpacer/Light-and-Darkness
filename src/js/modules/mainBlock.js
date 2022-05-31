@@ -27,6 +27,18 @@ export const drawCanvas = () => {
             canvasView: canvasView
         })
 
+        const shop = new Sprite({
+            position: {
+                x: 600,
+                y: 135
+            },
+            imageSrc: '.././img/map/shop_anim.png',
+            scale: 2.7,
+            framesMax: 6,
+            canvasBlock: canvasBlock,
+            canvasView: canvasView
+        })
+
         const player = new Fighter({
             position:{
                 x: 0,
@@ -37,16 +49,16 @@ export const drawCanvas = () => {
                 y: 1
             },
             offset: {
-                x: -50,
-                y: 0
+                x: 100,
+                y: 100
             },
             color: 'blue',
             imageSrc: '.././img/person/Hero1/Idle.png',
             framesMax: 10,
             scale: 2.65,
             offset: {
-                x: 215,
-                y: 115
+                x: 250,
+                y: 215
             },
             sprites: {
                 idle: {
@@ -78,6 +90,14 @@ export const drawCanvas = () => {
                     framesMax: 7,
                 }
             },
+            attackBox: {
+                offset: {
+                    x: 50,
+                    y: 0
+                },
+                width: 100,
+                height: 50
+            },
             canvasView: canvasView,
             canvasBlock: canvasBlock
         })
@@ -92,7 +112,7 @@ export const drawCanvas = () => {
             },
             offset: {
                 x: 20,
-                y: 0
+                y: 100
             },
             color: 'blue',
             imageSrc: '.././img/person/Hero2/idle.png',
@@ -100,7 +120,7 @@ export const drawCanvas = () => {
             scale: 1.6,
             offset: {
                 x: 100,
-                y: 35
+                y: 140
             },
             sprites: {
                 idle: {
@@ -200,17 +220,21 @@ export const drawCanvas = () => {
             canvasView.fillRect(0, 0, canvasBlock.width, canvasBlock.height)
 
             background.update()
+            shop.update()
             player.update()
             enemy.update()
 
             player.velocity.x = 0
             enemy.velocity.x = 0
             // player
+            player.switchSprite('idle')
             if(keys.d.pressed && player.lastKey === 'd'){
                 player.velocity.x = 5
+                player.switchSprite('run')
             }
             if(keys.a.pressed && player.lastKey === 'a'){
                 player.velocity.x = -5
+                player.switchSprite('run')
             }
             if(collisonAttack({rectangle1: player, rectangle2: enemy}) && player.isAttack){
                 player.isAttack = false
@@ -218,13 +242,17 @@ export const drawCanvas = () => {
                 document.querySelector('#player2').style.width = enemy.health + '%'
             }
             // enemy
+            enemy.switchSprite('idle')
             if(keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft'){
                 enemy.velocity.x = -5
+                enemy.switchSprite('run')
             }
             
             if(keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight'){
                 enemy.velocity.x = 5
+                enemy.switchSprite('run')
             }
+
             
             if(collisonAttack({rectangle1: enemy, rectangle2: player}) && enemy.isAttack){
                 enemy.isAttack = false
@@ -277,7 +305,6 @@ export const drawCanvas = () => {
         })
 
         window.addEventListener('keyup', (e) => {
-            console.log(e.eky)
             switch(e.key){
                 // player
                 case 'd':
