@@ -50,15 +50,15 @@ export const drawCanvas = () => {
             },
             offset: {
                 x: 100,
-                y: 100
+                y: 215
             },
             color: 'blue',
             imageSrc: '.././img/person/Hero1/Idle.png',
             framesMax: 10,
             scale: 2.65,
             offset: {
-                x: 250,
-                y: 215
+                x: 100,
+                y: 120
             },
             sprites: {
                 idle: {
@@ -92,8 +92,8 @@ export const drawCanvas = () => {
             },
             attackBox: {
                 offset: {
-                    x: 50,
-                    y: 0
+                    x: 120,
+                    y: 50
                 },
                 width: 100,
                 height: 50
@@ -120,7 +120,7 @@ export const drawCanvas = () => {
             scale: 1.6,
             offset: {
                 x: 100,
-                y: 140
+                y: 35
             },
             sprites: {
                 idle: {
@@ -154,10 +154,10 @@ export const drawCanvas = () => {
             },
             attackBox: {
                 offset: {
-                    x: -70,
-                    y: 0
+                    x: -150,
+                    y: 50
                 },
-                width: 100,
+                width: 130,
                 height: 50
             },
             canvasView: canvasView,
@@ -227,42 +227,67 @@ export const drawCanvas = () => {
             player.velocity.x = 0
             enemy.velocity.x = 0
             // player
-            player.switchSprite('idle')
+            player.swicthSprite('idle')
             if(keys.d.pressed && player.lastKey === 'd'){
                 player.velocity.x = 5
-                player.switchSprite('run')
+                player.swicthSprite('run')
             }
             if(keys.a.pressed && player.lastKey === 'a'){
                 player.velocity.x = -5
-                player.switchSprite('run')
+                player.swicthSprite('run')
             }
-            if(collisonAttack({rectangle1: player, rectangle2: enemy}) && player.isAttack){
+            if(collisonAttack({rectangle1: player, rectangle2: enemy}) && player.isAttack && player.framesCurrent === 4){
                 player.isAttack = false
-                enemy.health -= 20
+                enemy.takeHit()
                 document.querySelector('#player2').style.width = enemy.health + '%'
             }
+
+            if(player.velocity.y < 0){
+                player.swicthSprite('jump')
+            }
+            if(player.velocity.y > 0){
+                player.swicthSprite('fall')
+            }
+
             // enemy
-            enemy.switchSprite('idle')
+            enemy.swicthSprite('idle')
             if(keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft'){
                 enemy.velocity.x = -5
-                enemy.switchSprite('run')
+                enemy.swicthSprite('run')
             }
             
             if(keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight'){
                 enemy.velocity.x = 5
-                enemy.switchSprite('run')
+                enemy.swicthSprite('run')
             }
 
             
-            if(collisonAttack({rectangle1: enemy, rectangle2: player}) && enemy.isAttack){
+            if(collisonAttack({rectangle1: enemy, rectangle2: player}) && enemy.isAttack && enemy.framesCurrent === 4){
                 enemy.isAttack = false
-                player.health -= 20
+                player.takeHit()
+                console.log('Attack 2')
                 document.querySelector('#player1').style.width = player.health + '%'
             }
 
 
             if(player.health == 0 || enemy.health == 0){
                 winner(player,enemy,timerID)
+                
+            }
+
+            if(player.isAttack && player.framesCurrent === 4){
+                player.isAttack = false
+            }
+    
+            if(enemy.isAttack && enemy.framesCurrent === 4){
+                enemy.isAttack = false
+            }
+
+            if(enemy.velocity.y < 0){
+                enemy.swicthSprite('jump')
+            }
+            if(enemy.velocity.y > 0){
+                enemy.swicthSprite('fall')
             }
 
         }
