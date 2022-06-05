@@ -49,7 +49,7 @@ export class Fighter extends Sprite{
         })
         this.velocity = velocity
         this.height = 150
-        this.width = 50
+        this.width = 150
         this.lastKeys
         this.attackBox = {
             position: {
@@ -70,7 +70,7 @@ export class Fighter extends Sprite{
         this.dead = false
         this.canvasBlock = canvasBlock
         this.canvasView = canvasView
-        this.gravity = 0.2
+        this.gravity = 0.4
 
         for(const sprite in this.sprites){
             sprites[sprite].image = new Image()
@@ -84,12 +84,15 @@ export class Fighter extends Sprite{
         this.draw()
         if(!this.dead){
             this.animateFrame()
+            console.log(this.dead)
         }
 
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y
         
-        
+        // this.canvasView.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
+
+
         this.position.y += this.velocity.y
         this.position.x += this.velocity.x
 
@@ -124,6 +127,7 @@ export class Fighter extends Sprite{
 
         if(this.health <= 0){
             this.swicthSprite('death')
+
         }
         else{
             this.swicthSprite('takeHit')
@@ -192,3 +196,6 @@ export class Fighter extends Sprite{
         }
     }
 }
+
+
+

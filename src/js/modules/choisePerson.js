@@ -1,3 +1,5 @@
+export let personPlayer
+export let enemyPlayer
 export const choise = () => {
     const personBlock = document.querySelectorAll('.person__characther')
     const nextButton = document.querySelector('.btn__next')
@@ -19,13 +21,17 @@ export const choise = () => {
             if(target.classList.contains('knights')){
                 activeChoise(target,'active__knights')
                 target.closest('.person__item').classList.add('active__knights')
+                personPlayer = target.getAttribute('id')
+                console.log(personPlayer)
                 choiseHero = true
                 console.log(target)
+                return personPlayer
             }
             if(target.classList.contains('monster')){
                 console.log(target)
                 activeChoise(target,'active__monster')
                 target.closest('.person__item').classList.add('active__monster')
+                enemyPlayer = target.getAttribute('id')
                 choiseMonster = true
                 console.log(target)
             }

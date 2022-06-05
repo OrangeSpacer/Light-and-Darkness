@@ -1,3 +1,5 @@
+import { enemyPlayer, personPlayer } from "./choisePerson.js"
+import { personDraw } from "./PersonDraw.js"
 import { Fighter, Sprite } from "./sprite.js"
 import { winner } from "./win.js"
 
@@ -5,11 +7,12 @@ export const drawCanvas = () => {
     const nextBtn = document.querySelector('.btn__next')
     const gameBlock = document.querySelector('.game__content')
 
+    console.log(personPlayer)
     nextBtn.addEventListener('click', () => {
+        document.querySelector('.game').style.display='block'
         gameBlock.style.display = 'inline-block'
         const canvasBlock = document.querySelector('canvas')
         const canvasView = canvasBlock.getContext('2d')
-
 
         canvasBlock.width = 1024
         canvasBlock.height = 576
@@ -41,124 +44,122 @@ export const drawCanvas = () => {
 
         const player = new Fighter({
             position:{
-                x: 0,
-                y: 100
+                x: personDraw[`${personPlayer}`].position.x,
+                y: personDraw[`${personPlayer}`].position.y,
             },
             velocity:{
-                x: 5,
-                y: 1
+                x: personDraw[`${personPlayer}`].velocity.x,
+                y: personDraw[`${personPlayer}`].velocity.x
             },
             offset: {
-                x: 100,
-                y: 215
+                x: 20,
+                y: 100
             },
-            color: 'blue',
-            imageSrc: '.././img/person/Hero1/Idle.png',
-            framesMax: 10,
-            scale: 2.65,
+            imageSrc: personDraw[`${personPlayer}`].imageSrc,
+            framesMax: personDraw[`${personPlayer}`].framesMax,
+            scale: personDraw[`${personPlayer}`].scale,
             offset: {
-                x: 100,
-                y: 120
+                x: personDraw[`${personPlayer}`].offset.x,
+                y:  personDraw[`${personPlayer}`].offset.y
             },
             sprites: {
                 idle: {
-                    imageSrc : '.././img/person/Hero1//Idle.png',
-                    framesMax: 10,
+                    imageSrc : personDraw[`${personPlayer}`].sprites.idle.imageSrc,
+                    framesMax: personDraw[`${personPlayer}`].sprites.idle.framesMax,
                 },
                 run: {
-                    imageSrc: '.././img/person/Hero1//Run.png',
-                    framesMax: 8,
+                    imageSrc: personDraw[`${personPlayer}`].sprites.run.imageSrc,
+                    framesMax: personDraw[`${personPlayer}`].sprites.run.framesMax,
                 },
                 jump: {
-                    imageSrc: '.././img/person/Hero1/Jump.png',
-                    framesMax: 3,
+                    imageSrc: personDraw[`${personPlayer}`].sprites.jump.imageSrc,
+                    framesMax: personDraw[`${personPlayer}`].sprites.jump.framesMax,
                 },
                 fall: {
-                    imageSrc: '.././img/person/Hero1/Fall.png',
-                    framesMax: 3,
+                    imageSrc: personDraw[`${personPlayer}`].sprites.fall.imageSrc,
+                    framesMax: personDraw[`${personPlayer}`].sprites.fall.framesMax,
                 },
                 attack:{
-                    imageSrc: '.././img/person/Hero1/Attack1.png',
-                    framesMax: 7,
+                    imageSrc: personDraw[`${personPlayer}`].sprites.attack.imageSrc,
+                    framesMax: personDraw[`${personPlayer}`].sprites.attack.framesMax,
                 },
                 takeHit:{
-                    imageSrc: '.././img/person/Hero1/Take Hit.png',
-                    framesMax: 3,
+                    imageSrc: personDraw[`${personPlayer}`].sprites.takeHit.imageSrc,
+                    framesMax: personDraw[`${personPlayer}`].sprites.takeHit.framesMax,
                 },
                 death:{
-                    imageSrc: '.././img/person/Hero1/Death.png',
-                    framesMax: 7,
-                }
+                    imageSrc: personDraw[`${personPlayer}`].sprites.death.imageSrc,
+                    framesMax: personDraw[`${personPlayer}`].sprites.death.framesMax,
+                },
             },
             attackBox: {
                 offset: {
-                    x: 120,
-                    y: 50
+                    x: personDraw[`${personPlayer}`].attackBox.offset.x,
+                    y: personDraw[`${personPlayer}`].attackBox.offset.y
                 },
-                width: 100,
-                height: 50
+                width: personDraw[`${personPlayer}`].attackBox.width,
+                height: personDraw[`${personPlayer}`].attackBox.height
             },
             canvasView: canvasView,
             canvasBlock: canvasBlock
         })
         const enemy = new Fighter({
             position:{
-                x: 400,
-                y: 100
+                x: personDraw[`${enemyPlayer}`].position.x,
+                y: personDraw[`${enemyPlayer}`].position.y,
             },
             velocity:{
-                x: 5,
-                y: 1
+                x: personDraw[`${enemyPlayer}`].velocity.x,
+                y: personDraw[`${enemyPlayer}`].velocity.x
             },
             offset: {
                 x: 20,
                 y: 100
             },
-            color: 'blue',
-            imageSrc: '.././img/person/Hero2/idle.png',
-            framesMax: 6,
-            scale: 1.6,
+            imageSrc: personDraw[`${enemyPlayer}`].imageSrc,
+            framesMax: personDraw[`${enemyPlayer}`].framesMax,
+            scale: personDraw[`${enemyPlayer}`].scale,
             offset: {
-                x: 100,
-                y: 35
+                x: personDraw[`${enemyPlayer}`].offset.x,
+                y:  personDraw[`${enemyPlayer}`].offset.y
             },
             sprites: {
                 idle: {
-                    imageSrc : '.././img/person/Hero2/idle.png',
-                    framesMax: 6,
+                    imageSrc : personDraw[`${enemyPlayer}`].sprites.idle.imageSrc,
+                    framesMax: personDraw[`${enemyPlayer}`].sprites.idle.framesMax,
                 },
                 run: {
-                    imageSrc: '.././img/person/Hero2/Run.png',
-                    framesMax: 8,
+                    imageSrc: personDraw[`${enemyPlayer}`].sprites.run.imageSrc,
+                    framesMax: personDraw[`${enemyPlayer}`].sprites.run.framesMax,
                 },
                 jump: {
-                    imageSrc: '.././img/person/Hero2/Jump.png',
-                    framesMax: 2,
+                    imageSrc: personDraw[`${enemyPlayer}`].sprites.jump.imageSrc,
+                    framesMax: personDraw[`${enemyPlayer}`].sprites.jump.framesMax,
                 },
                 fall: {
-                    imageSrc: '.././img/person/Hero2/Fall.png',
-                    framesMax: 2,
+                    imageSrc: personDraw[`${enemyPlayer}`].sprites.fall.imageSrc,
+                    framesMax: personDraw[`${enemyPlayer}`].sprites.fall.framesMax,
                 },
                 attack:{
-                    imageSrc: '.././img/person/Hero2/Attack1.png',
-                    framesMax: 6,
+                    imageSrc: personDraw[`${enemyPlayer}`].sprites.attack.imageSrc,
+                    framesMax: personDraw[`${enemyPlayer}`].sprites.attack.framesMax,
                 },
                 takeHit:{
-                    imageSrc: '.././img/person/Hero2/Hit.png',
-                    framesMax: 4,
+                    imageSrc: personDraw[`${enemyPlayer}`].sprites.takeHit.imageSrc,
+                    framesMax: personDraw[`${enemyPlayer}`].sprites.takeHit.framesMax,
                 },
                 death:{
-                    imageSrc: '.././img/person/Hero2/Death.png',
-                    framesMax: 11,
+                    imageSrc: personDraw[`${enemyPlayer}`].sprites.death.imageSrc,
+                    framesMax: personDraw[`${enemyPlayer}`].sprites.death.framesMax,
                 },
             },
             attackBox: {
                 offset: {
-                    x: -150,
-                    y: 50
+                    x: personDraw[`${enemyPlayer}`].attackBox.offset.x,
+                    y: personDraw[`${enemyPlayer}`].attackBox.offset.y
                 },
-                width: 130,
-                height: 50
+                width: personDraw[`${enemyPlayer}`].attackBox.width,
+                height: personDraw[`${enemyPlayer}`].attackBox.height
             },
             canvasView: canvasView,
             canvasBlock: canvasBlock
@@ -193,7 +194,7 @@ export const drawCanvas = () => {
         }
 
         
-        let timer = 10
+        let timer = 20
         let timerID
 
 
@@ -227,68 +228,73 @@ export const drawCanvas = () => {
             player.velocity.x = 0
             enemy.velocity.x = 0
             // player
-            player.swicthSprite('idle')
-            if(keys.d.pressed && player.lastKey === 'd'){
-                player.velocity.x = 5
-                player.swicthSprite('run')
-            }
-            if(keys.a.pressed && player.lastKey === 'a'){
-                player.velocity.x = -5
-                player.swicthSprite('run')
-            }
-            if(collisonAttack({rectangle1: player, rectangle2: enemy}) && player.isAttack && player.framesCurrent === 4){
-                player.isAttack = false
-                enemy.takeHit()
-                document.querySelector('#player2').style.width = enemy.health + '%'
-            }
+            if(!player.dead){
+                player.swicthSprite('idle')
+                if(keys.d.pressed && player.lastKey === 'd'){
+                    player.velocity.x = 5
+                    player.swicthSprite('run')
+                }
+                if(keys.a.pressed && player.lastKey === 'a'){
+                    player.velocity.x = -5
+                    player.swicthSprite('run')
+                }
+                if(collisonAttack({rectangle1: player, rectangle2: enemy}) && player.isAttack && player.framesCurrent === 4){
+                    player.isAttack = false
+                    enemy.takeHit()
+                    document.querySelector('#player2').style.width = enemy.health + '%'
+                }
 
-            if(player.velocity.y < 0){
-                player.swicthSprite('jump')
-            }
-            if(player.velocity.y > 0){
-                player.swicthSprite('fall')
-            }
+                
+                if(player.velocity.y < 0){
+                    player.swicthSprite('jump')
+                }
+                if(player.velocity.y > 0){
+                    player.swicthSprite('fall')
+                }
 
+                
+                if(player.isAttack && player.framesCurrent === 4){
+                    player.isAttack = false
+                }
+            }
             // enemy
-            enemy.swicthSprite('idle')
-            if(keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft'){
-                enemy.velocity.x = -5
-                enemy.swicthSprite('run')
+            if(!enemy.dead){
+                enemy.swicthSprite('idle')
+                if(keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft'){
+                    enemy.velocity.x = -5
+                    enemy.swicthSprite('run')
+                }
+                
+                if(keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight'){
+                    enemy.velocity.x = 5
+                    enemy.swicthSprite('run')
+                }
+
+                
+                if(collisonAttack({rectangle1: enemy, rectangle2: player}) && enemy.isAttack && enemy.framesCurrent === 4){
+                    enemy.isAttack = false
+                    player.takeHit()
+                    console.log('Attack 2')
+                    document.querySelector('#player1').style.width = player.health + '%'
+                }
+
+                if(enemy.isAttack && enemy.framesCurrent === 4){
+                    enemy.isAttack = false
+                }
+                
+                if(enemy.velocity.y < 0){
+                    enemy.swicthSprite('jump')
+                }
+                if(enemy.velocity.y > 0){
+                    enemy.swicthSprite('fall')
+                }
             }
             
-            if(keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight'){
-                enemy.velocity.x = 5
-                enemy.swicthSprite('run')
-            }
-
-            
-            if(collisonAttack({rectangle1: enemy, rectangle2: player}) && enemy.isAttack && enemy.framesCurrent === 4){
-                enemy.isAttack = false
-                player.takeHit()
-                console.log('Attack 2')
-                document.querySelector('#player1').style.width = player.health + '%'
-            }
-
-
             if(player.health == 0 || enemy.health == 0){
                 winner(player,enemy,timerID)
                 
             }
-
-            if(player.isAttack && player.framesCurrent === 4){
-                player.isAttack = false
-            }
     
-            if(enemy.isAttack && enemy.framesCurrent === 4){
-                enemy.isAttack = false
-            }
-
-            if(enemy.velocity.y < 0){
-                enemy.swicthSprite('jump')
-            }
-            if(enemy.velocity.y > 0){
-                enemy.swicthSprite('fall')
-            }
 
         }
         animate()
@@ -338,6 +344,8 @@ export const drawCanvas = () => {
                 case 'a':
                     keys.a.pressed = false
                     break
+                case 'w':
+                    keys.w.pressed = false
                 // enemy
                 case 'ArrowLeft':
                     keys.ArrowLeft.pressed = false

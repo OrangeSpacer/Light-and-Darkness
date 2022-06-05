@@ -22,6 +22,9 @@
     }
 
     &__item{
+        width: 195px;
+        height: 220px;
+        text-align: center;
         cursor: pointer;
         border: 1px solid rgba(236, 236, 236, 0.082);
     }
