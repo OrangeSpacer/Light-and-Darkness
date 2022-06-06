@@ -350,7 +350,7 @@ export const personDraw = {
         scale: 2.7,
         offset: {
             x: 100,
-            y: 120
+            y: 110
         },
         sprites: {
             idle: {
@@ -385,62 +385,6 @@ export const personDraw = {
         attackBox: {
             offset: {
                 x: -30,
-                y: 50
-            },
-            width: 130,
-            height: 50
-        },
-    },
-    humanFalse:{
-        position:{
-            x: 800,
-            y: 100
-        },
-        velocity:{
-            x: 5,
-            y: 1
-        },
-        color: 'blue',
-        imageSrc: '.././img/person/HumanFalse/idle.png',
-        framesMax: 8,
-        scale: 2.7,
-        offset: {
-            x: 100,
-            y: 110
-        },
-        sprites: {
-            idle: {
-                imageSrc : '.././img/person/HumanFalse/idle.png',
-                framesMax: 8,
-            },
-            run: {
-                imageSrc: '.././img/person/HumanFalse/Run.png',
-                framesMax: 8,
-            },
-            jump: {
-                imageSrc: '.././img/person/HumanFalse/Jump.png',
-                framesMax: 2,
-            },
-            fall: {
-                imageSrc: '.././img/person/HumanFalse/Fall.png',
-                framesMax: 2,
-            },
-            attack:{
-                imageSrc: '.././img/person/HumanFalse/Attack4.png',
-                framesMax: 4,
-            },
-            takeHit:{
-                imageSrc: '.././img/person/HumanFalse/Take Hit.png',
-                framesMax: 4,
-            },
-            death:{
-                imageSrc: '.././img/person/HumanFalse/Death.png',
-                framesMax: 6,
-            },
-        },
-        attackBox: {
-            offset: {
-                x: -60,
                 y: 50
             },
             width: 130,
