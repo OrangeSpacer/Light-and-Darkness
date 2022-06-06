@@ -45,10 +45,52 @@
     &__end{
         display: none;
         position: absolute;
+        top: 35%;
         left: 50%;
-        top: 50%;
-        transform: translate(-50%);
-        font-size: 36px;
-        color: white;
+        transform: translateX(-50%);
+        width: 350px;
+        height: 150px;
+        border: 1px solid #8b5a2b;
+        background-color: #8b5a2b;
+        border-radius: 15px;
+        &-text{
+            padding-top: 15px;
+            font-size: 36px;
+            color: white;
+        }
+    }
+    &__control{
+        &-info{
+            cursor: pointer;
+            font-size: 36px;
+            width: 50px;
+            margin: 0 auto;
+            color: white;
+        }
+        &-block{
+            display: none;
+            position: absolute;
+            justify-content: center;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 550px;
+            border-radius: 15px;
+            border: 1px solid brown;
+            background-color: brown;
+        }
+        &-person{
+            text-align: left;
+            padding: 50px;
+        }
+        &-text{
+            font-size: 25px;
+            color: white;
+        }
+        &-list-item{
+            list-style: none;
+            font-size: 20px;
+            color: white;
+        }
     }
 }

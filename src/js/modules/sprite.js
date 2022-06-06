@@ -77,14 +77,12 @@ export class Fighter extends Sprite{
             sprites[sprite].image.src = sprites[sprite].imageSrc
         }
 
-        console.log(this.sprites)
     }
 
     update(){
         this.draw()
         if(!this.dead){
             this.animateFrame()
-            console.log(this.dead)
         }
 
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x
