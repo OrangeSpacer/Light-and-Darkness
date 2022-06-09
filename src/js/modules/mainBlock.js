@@ -7,7 +7,9 @@ export const drawCanvas = () => {
     const nextBtn = document.querySelector('.btn__next')
     const gameBlock = document.querySelector('.game__content')
 
-    console.log(personPlayer)
+    const healthBlock = gsap.timeline()
+
+
     nextBtn.addEventListener('click', () => {
         document.querySelector('.game').style.display='block'
         gameBlock.style.display = 'inline-block'
@@ -194,7 +196,7 @@ export const drawCanvas = () => {
         }
 
         
-        let timer = 20
+        let timer = 15
         let timerID
 
 
@@ -204,7 +206,6 @@ export const drawCanvas = () => {
                 timer--
                 timerID = setTimeout(timeGame,1000)
                 timeBlock.innerHTML = timer
-                console.log(timer)
             }
             if(timer == 0){
                 winner(player,enemy,timerID)
@@ -241,7 +242,7 @@ export const drawCanvas = () => {
                 if(collisonAttack({rectangle1: player, rectangle2: enemy}) && player.isAttack && player.framesCurrent === 4){
                     player.isAttack = false
                     enemy.takeHit()
-                    document.querySelector('#player2').style.width = enemy.health + '%'
+                    healthBlock.to(document.querySelector('#player2'),{width: enemy.health + '%'})
                 }
 
                 
@@ -274,8 +275,7 @@ export const drawCanvas = () => {
                 if(collisonAttack({rectangle1: enemy, rectangle2: player}) && enemy.isAttack && enemy.framesCurrent === 4){
                     enemy.isAttack = false
                     player.takeHit()
-                    console.log('Attack 2')
-                    document.querySelector('#player1').style.width = player.health + '%'
+                    healthBlock.to(document.querySelector('#player1'),{width: player.health + '%'})
                 }
 
                 if(enemy.isAttack && enemy.framesCurrent === 4){
@@ -300,7 +300,6 @@ export const drawCanvas = () => {
         animate()
 
         window.addEventListener('keydown', (e) => {
-            console.log(e.key)
             switch(e.key){
                 // player
                 case 'd':

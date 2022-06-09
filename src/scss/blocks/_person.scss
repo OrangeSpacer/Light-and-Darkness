@@ -60,3 +60,11 @@
 .active__monster{
     border-color: red;
 }
+
+@media screen and (max-width: 1024px){
+    .person{
+        &__choise{
+            grid-template-columns: repeat(2,390px);
+        }
+    }
+}

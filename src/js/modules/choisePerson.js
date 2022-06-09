@@ -23,7 +23,6 @@ export const choise = () => {
                 target.closest('.person__item').classList.add('active__knights')
                 personPlayer = target.getAttribute('id')
                 choiseHero = true
-                return personPlayer
             }
             if(target.classList.contains('monster')){
                 activeChoise(target,'active__monster')
@@ -35,7 +34,6 @@ export const choise = () => {
         })
     })
     function Next(){
-        console.log(choiseHero,choiseMonster)
         if(choiseHero && choiseMonster){
             nextButton.style.display = 'block'
         }

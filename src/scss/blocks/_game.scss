@@ -45,7 +45,8 @@
     &__end{
         display: none;
         position: absolute;
-        top: 35%;
+        top: -50%;
+        opacity: 0;
         left: 50%;
         transform: translateX(-50%);
         width: 350px;
@@ -74,7 +75,7 @@
             top: 25%;
             left: 50%;
             transform: translateX(-50%);
-            width: 550px;
+            width: 630px;
             border-radius: 15px;
             border: 1px solid brown;
             background-color: brown;
