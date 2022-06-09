@@ -1,1 +1,1 @@
-[Link to the page](https://elegant-jelly-0ed032.netlify.app/])
+[Link to the page](https://elegant-jelly-0ed032.netlify.app/)
