@@ -196,7 +196,7 @@ export const drawCanvas = () => {
         }
 
         
-        let timer = 15
+        let timer = 10
         let timerID
 
 
