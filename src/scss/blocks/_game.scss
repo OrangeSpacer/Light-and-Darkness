@@ -69,6 +69,7 @@
             color: white;
         }
         &-block{
+            flex-wrap: wrap;
             display: none;
             position: absolute;
             justify-content: center;
@@ -91,6 +92,11 @@
         &-list-item{
             list-style: none;
             font-size: 20px;
+            color: white;
+        }
+        &-language{
+            font-size: 18px;
+            padding-bottom: 15px;
             color: white;
         }
     }

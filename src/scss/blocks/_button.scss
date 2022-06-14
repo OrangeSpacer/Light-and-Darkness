@@ -56,4 +56,27 @@
             transition: all 0.5s ease;
         }
     }
+    &__close{
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        &::before{
+            display: block;
+            content: '';
+            height: 21px;
+            width: 2px;
+            background-color: white;
+            transform: rotate(-45deg);
+        }
+        &::after{
+            position: absolute;
+            top: 0;
+            display: block;
+            content: '';
+            height: 21px;
+            width: 2px;
+            background-color: white;
+            transform: rotate(45deg);
+        }
+    }
 }

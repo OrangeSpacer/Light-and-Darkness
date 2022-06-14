@@ -221,6 +221,7 @@ export const drawCanvas = () => {
             canvasView.fillStyle = 'black'
             canvasView.fillRect(0, 0, canvasBlock.width, canvasBlock.height)
 
+
             background.update()
             shop.update()
             player.update()
@@ -292,7 +293,6 @@ export const drawCanvas = () => {
             
             if(player.health == 0 || enemy.health == 0){
                 winner(player,enemy,timerID)
-                
             }
     
 
@@ -311,8 +311,10 @@ export const drawCanvas = () => {
                     player.lastKey = 'a'
                     break
                 case 'w':
-                    player.velocity.y = -8
-                    break
+                    if(!player.dead){
+                        player.velocity.y = -8
+                        break
+                    }
                 case ' ':
                     player.attack()
                     break
@@ -326,9 +328,11 @@ export const drawCanvas = () => {
                     keys.ArrowRight.pressed = true
                     break
                 case 'Enter':
-                    enemy.velocity.y = -8
-                    break
-                case '/':
+                    if(!enemy.dead){
+                        enemy.velocity.y = -8
+                        break
+                    }
+                case 'ArrowUp':
                     enemy.attack()
                     break
             }
